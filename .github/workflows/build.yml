@@ -1,0 +1,43 @@
+name: Weekly File Generation
+
+on:
+  schedule:
+    # Runs at 00:00 on Sunday
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  generate-and-commit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run generation script
+        env:
+          GITHUB_USERNAME: "gufett0"
+          API_TOKEN: ${{ secrets.API_TOKEN }}
+          CACHE_FILE: ${{ vars.CACHE_FILE }}
+          FLUSH_CACHE: ${{ vars.FLUSH_CACHE }}
+          SALT: ${{ secrets.SALT }}
+        run: npx tsx main.ts
+        
+      - name: Configure Git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+      - name: Commit and push if changed
+        run: |
+          git add .
+          git diff --staged --quiet || (git commit -m "chore: auto-update stats" && git push)

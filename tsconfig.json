@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "module": "ESNext",   // Use ES modules
+      "target": "ES6",      // Set target to ES6 or higher
+      "moduleResolution": "node",  // Node-style module resolution
+      "esModuleInterop": true,     // For compatibility with non-ESM libraries
+      "allowJs": true,             // Allow JavaScript files
+      "skipLibCheck": true         // Skip library type checking
+    }
+  }
