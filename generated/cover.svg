@@ -27,10 +27,10 @@
   
       <text x="50" y="50" class="console ascii-art">
           <tspan x="50" y="67">$ gufett0 github-stats</tspan>
-          <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">3244 days</tspan></tspan>
-          <tspan x="50" y="154.5"><tspan class="cyan">repos:</tspan> <tspan class="white">106</tspan></tspan>
-          <tspan x="50" y="189.5"><tspan class="cyan">commits:</tspan> <tspan class="white">758</tspan></tspan>
-          <tspan x="50" y="224.5"><tspan class="cyan">lines:</tspan> <tspan class="white">3168009 (<tspan class="green">7552826++</tspan>, <tspan class="red">4384817--</tspan>)</tspan></tspan>
+          <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">1103 days</tspan></tspan>
+          <tspan x="50" y="154.5"><tspan class="cyan">repos:</tspan> <tspan class="white">44</tspan></tspan>
+          <tspan x="50" y="189.5"><tspan class="cyan">commits:</tspan> <tspan class="white">362</tspan></tspan>
+          <tspan x="50" y="224.5"><tspan class="cyan">lines:</tspan> <tspan class="white">295516 (<tspan class="green">330051++</tspan>, <tspan class="red">34535--</tspan>)</tspan></tspan>
       </text>
 
   </svg>
