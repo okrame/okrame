@@ -44,30 +44,39 @@ export async function getEdges(
     const { user }: any = await graphqlWithAuth(`
       query ($owner_affiliation: [RepositoryAffiliation], $username: String!, $cursor: String) {
         user(login: $username) {
-            repositories(first: 60, after: $cursor, ownerAffiliations: $owner_affiliation) {
+          repositories(first: 60, after: $cursor, ownerAffiliations: $owner_affiliation) {
             edges {
-                node {
-                    ... on Repository {
-                        nameWithOwner
-                        defaultBranchRef {
-                            target {
-                                ... on Commit {
-                                    history {
-                                        totalCount
-                                        }
-                                    }
-                                }
-                            }
-                        }
+              node {
+                nameWithOwner
+                isFork
+                createdAt
+                defaultBranchRef {
+                  target {
+                    ... on Commit {
+                      history {
+                        totalCount
+                      }
                     }
+                  }
                 }
-                pageInfo {
-                    endCursor
-                    hasNextPage
+                languages(first: 20, orderBy: {field: SIZE, direction: DESC}) {
+                  edges {
+                    size
+                    node {
+                      name
+                      color
+                    }
+                  }
                 }
+              }
             }
+            pageInfo {
+              endCursor
+              hasNextPage
+            }
+          }
         }
-    }
+      }
     `, {
       owner_affiliation: affiliation,
       username: process.env.GITHUB_USERNAME,
@@ -112,15 +121,24 @@ export async function getEdgesFromOrgs(
                 repositories(first: 60) {
                   edges {
                     node {
-                      ... on Repository {
-                        nameWithOwner
-                        defaultBranchRef {
-                          target {
-                            ... on Commit {
-                              history {
-                                totalCount
-                              }
+                      nameWithOwner
+                      isFork
+                      createdAt
+                      defaultBranchRef {
+                        target {
+                          ... on Commit {
+                            history {
+                              totalCount
                             }
+                          }
+                        }
+                      }
+                      languages(first: 20, orderBy: {field: SIZE, direction: DESC}) {
+                        edges {
+                          size
+                          node {
+                            name
+                            color
                           }
                         }
                       }
@@ -176,7 +194,8 @@ export async function getRepoInfo(
   cursor: string | undefined,
   additions: number,
   deletions: number,
-  commits: number
+  commits: number,
+  languages: {[name: string]: number} = {}
 ): Promise<EdgeInfo> {
   const graphqlWithAuth = graphql.defaults({
     headers: {
@@ -186,68 +205,122 @@ export async function getRepoInfo(
 
   increaseCounter('repoInfo')
 
-  const { repository }: any = await graphqlWithAuth(`
+  try {
+    const { repository }: any = await graphqlWithAuth(`
       query ($repo_name: String!, $owner: String!, $cursor: String) {
         repository(name: $repo_name, owner: $owner) {
-            defaultBranchRef {
-                target {
-                    ... on Commit {
-                        history(first: 100, after: $cursor) {
-                            totalCount
-                            edges {
-                                node {
-                                    ... on Commit {
-                                        committedDate
-                                    }
-                                    author {
-                                        user {
-                                            id
-                                        }
-                                    }
-                                    deletions
-                                    additions
-                                }
-                            }
-                            pageInfo {
-                                endCursor
-                                hasNextPage
-                            }
+          isFork
+          createdAt
+          defaultBranchRef {
+            target {
+              ... on Commit {
+                history(first: 100, after: $cursor) {
+                  totalCount
+                  edges {
+                    node {
+                      committedDate
+                      author {
+                        user {
+                          id
                         }
+                      }
+                      additions
+                      deletions
                     }
+                  }
+                  pageInfo {
+                    endCursor
+                    hasNextPage
+                  }
                 }
+              }
             }
+          }
+          languages(first: 20, orderBy: {field: SIZE, direction: DESC}) {
+            edges {
+              size
+              node {
+                name
+                color
+              }
+            }
+          }
         }
-    }
+      }
     `, {
-    repo_name: repoName,
-    owner: owner,
-    cursor
-  });
+      repo_name: repoName,
+      owner: owner,
+      cursor
+    });
 
-  if (!repository.defaultBranchRef) return { additions: 0, deletions: 0, commits: 0, totalCommits: 0 }
+    if (!repository.defaultBranchRef) return { additions: 0, deletions: 0, commits: 0, totalCommits: 0, languages: {} }
 
-  for (var e of repository.defaultBranchRef.target.history.edges) {
-    if (e.node.author.user?.id == ownerId) {
-      commits += 1
-      additions += e.node.additions
-      deletions += e.node.deletions
+    // Check if it's a fork and created before 2024
+    const isFork = repository.isFork || false;
+    const createdAt = repository.createdAt ? new Date(repository.createdAt) : new Date();
+    const isRecentFork = (createdAt.getFullYear() > 2024) || 
+                         (createdAt.getFullYear() === 2024 && createdAt.getMonth() >= 5); 
+    
+    // Skip language processing for old forks
+    if (isFork && !isRecentFork) {
+      return { 
+        additions, 
+        deletions, 
+        commits, 
+        totalCommits: repository.defaultBranchRef.target.history.totalCount,
+        languages: {}
+      }
     }
-  }
 
-  if (
-    repository.defaultBranchRef.target.history.edges.length == 0 ||
-    !repository.defaultBranchRef.target.history.pageInfo.hasNextPage
-  ) {
-    return { additions, deletions, commits, totalCommits: repository.defaultBranchRef.target.history.totalCount }
-  } else {
-    return getRepoInfo(
-      repoName,
-      owner,
-      ownerId,
-      repository.defaultBranchRef.target.history.pageInfo.endCursor,
-      additions,
-      deletions,
-      commits
-    )
+    // Process languages data if this is the first call (cursor is undefined)
+    if (!cursor && repository.languages && repository.languages.edges) {
+      for (const lang of repository.languages.edges) {
+        let langName = lang.node.name;
+        
+        // Convert Jupyter Notebook to Python
+        if (langName === "Jupyter Notebook") {
+          langName = "Python";
+        }
+        
+        languages[langName] = (languages[langName] || 0) + lang.size;
+      }
+    }
+
+    for (var e of repository.defaultBranchRef.target.history.edges) {
+      if (e.node.author.user?.id == ownerId) {
+        commits += 1
+        additions += e.node.additions
+        deletions += e.node.deletions
+      }
+    }
+
+    if (
+      repository.defaultBranchRef.target.history.edges.length == 0 ||
+      !repository.defaultBranchRef.target.history.pageInfo.hasNextPage
+    ) {
+      return { 
+        additions, 
+        deletions, 
+        commits, 
+        totalCommits: repository.defaultBranchRef.target.history.totalCount,
+        languages
+      }
+    } else {
+      return getRepoInfo(
+        repoName,
+        owner,
+        ownerId,
+        repository.defaultBranchRef.target.history.pageInfo.endCursor,
+        additions,
+        deletions,
+        commits,
+        languages
+      )
+    }
+  } catch (error) {
+    let message = 'Unknown Error'
+    if (error instanceof Error) message = error.message
+    console.log(`An error occurred while fetching repo info for ${owner}/${repoName}: ${message}`)
+    return { additions: 0, deletions: 0, commits: 0, totalCommits: 0, languages: {} }
   }
 }

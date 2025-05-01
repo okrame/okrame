@@ -1,5 +1,6 @@
 export interface CacheInstance {
     edges: { [key: string]: EdgeInfo };
+    languages?: LanguageStats;
 }
 
 export interface Edge {
@@ -11,6 +12,7 @@ export interface EdgeInfo {
     deletions: number;
     commits: number;
     totalCommits: number;
+    languages?: { [name: string]: number };
 }
 
 export interface UserInfo {
@@ -24,4 +26,9 @@ export interface Stats {
     commits: number;
     additions: number;
     deletions: number;
+    languages: LanguageStats;
+}
+
+export interface LanguageStats {
+    [name: string]: number;
 }
