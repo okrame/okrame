@@ -32,7 +32,7 @@
 
     <!-- Stats Section -->
     <text x="50" y="50" class="console ascii-art">
-        <tspan x="50" y="66.40625">$ gufett0 github-stats</tspan>
+        <tspan x="50" y="66.40625">$ 0 github-stats</tspan>
         <tspan x="50" y="118.90625"><tspan class="cyan">account-age:</tspan> <tspan class="white">1106 days</tspan></tspan>
         <tspan x="50" y="153.90625"><tspan class="cyan">repos:</tspan> <tspan class="white">36</tspan></tspan>
         <tspan x="50" y="188.90625"><tspan class="cyan">commits:</tspan> <tspan class="white">359</tspan></tspan>

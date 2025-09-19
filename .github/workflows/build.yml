@@ -25,7 +25,7 @@ jobs:
         
       - name: Run generation script
         env:
-          GITHUB_USERNAME: "gufett0"
+          GITHUB_USERNAME: "okrame"
           API_TOKEN: ${{ secrets.API_TOKEN }}
           CACHE_FILE: ${{ vars.CACHE_FILE }}
           FLUSH_CACHE: ${{ vars.FLUSH_CACHE }}

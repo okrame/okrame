@@ -3,27 +3,29 @@ import { increaseCounter } from "./utils";
 import { Edge, EdgeInfo, UserInfo } from "./types";
 
 export async function getUserInfo(username: string): Promise<UserInfo> {
-
   const graphqlWithAuth = graphql.defaults({
     headers: {
       authorization: `token ${process.env.API_TOKEN}`,
     },
   });
 
-  increaseCounter('userInfo')
+  increaseCounter("userInfo");
 
-  const { user }: any = await graphqlWithAuth(`
+  const { user }: any = await graphqlWithAuth(
+    `
     query($login: String!){
       user(login: $login) {
           id
           createdAt
       }
   }
-  `, {
-    login: username,
-  });
+  `,
+    {
+      login: username,
+    }
+  );
 
-  return { id: user.id, createdAt: user.createdAt }
+  return { id: user.id, createdAt: user.createdAt };
 }
 
 export async function getEdges(
@@ -31,17 +33,17 @@ export async function getEdges(
   cursor: string | undefined,
   edges: Edge[]
 ): Promise<Edge[]> {
-
   const graphqlWithAuth = graphql.defaults({
     headers: {
       authorization: `token ${process.env.API_TOKEN}`,
     },
   });
 
-  increaseCounter('edges')
+  increaseCounter("edges");
 
   try {
-    const { user }: any = await graphqlWithAuth(`
+    const { user }: any = await graphqlWithAuth(
+      `
       query ($owner_affiliation: [RepositoryAffiliation], $username: String!, $cursor: String) {
         user(login: $username) {
           repositories(first: 60, after: $cursor, ownerAffiliations: $owner_affiliation) {
@@ -77,25 +79,32 @@ export async function getEdges(
           }
         }
       }
-    `, {
-      owner_affiliation: affiliation,
-      username: process.env.GITHUB_USERNAME,
-      cursor
-    });
+    `,
+      {
+        owner_affiliation: affiliation,
+        username: process.env.GITHUB_USERNAME,
+        cursor,
+      }
+    );
 
     if (user.repositories.pageInfo.hasNextPage) {
-      const newEdges = edges.concat(user.repositories.edges)
-      return getEdges(affiliation, user.repositories.pageInfo.endCursor, newEdges)
+      const newEdges = edges.concat(user.repositories.edges);
+      return getEdges(
+        affiliation,
+        user.repositories.pageInfo.endCursor,
+        newEdges
+      );
     } else {
-      const newEdges = edges.concat(user.repositories.edges)
-      return newEdges
+      const newEdges = edges.concat(user.repositories.edges);
+      return newEdges;
     }
-
   } catch (e) {
-    let message = 'Unknown Error'
-    if (e instanceof Error) message = e.message
-    console.log(`An error occurred while fetching profile edges: ${message}. Only already collected edges will be used`)
-    return edges
+    let message = "Unknown Error";
+    if (e instanceof Error) message = e.message;
+    console.log(
+      `An error occurred while fetching profile edges: ${message}. Only already collected edges will be used`
+    );
+    return edges;
   }
 }
 
@@ -109,10 +118,11 @@ export async function getEdgesFromOrgs(
     },
   });
 
-  increaseCounter('orgEdges')
+  increaseCounter("orgEdges");
 
   try {
-    const { user }: any = await graphqlWithAuth(`
+    const { user }: any = await graphqlWithAuth(
+      `
       query ($username: String!, $cursor: String) {
         user(login: $username) {
           organizations(first: 60, after: $cursor) {
@@ -158,32 +168,31 @@ export async function getEdgesFromOrgs(
           }
         }
       }
-    `, {
-      username: process.env.GITHUB_USERNAME,
-      cursor
-    });
+    `,
+      {
+        username: process.env.GITHUB_USERNAME,
+        cursor,
+      }
+    );
 
-    // Flatten organization repositories
     const orgRepoEdges = user.organizations.edges.flatMap(
       (org: any) => org.node.repositories.edges
     );
 
     const newEdges = edges.concat(orgRepoEdges);
 
-    // Check if there are more organizations
     if (user.organizations.pageInfo.hasNextPage) {
-      return getEdgesFromOrgs(
-        user.organizations.pageInfo.endCursor,
-        newEdges
-      );
+      return getEdgesFromOrgs(user.organizations.pageInfo.endCursor, newEdges);
     } else {
-      return newEdges
+      return newEdges;
     }
   } catch (e) {
-    let message = 'Unknown Error'
-    if (e instanceof Error) message = e.message
-    console.log(`An error occurred while fetching orgs edges: ${message}. Only already collected edges will be used`)
-    return edges
+    let message = "Unknown Error";
+    if (e instanceof Error) message = e.message;
+    console.log(
+      `An error occurred while fetching orgs edges: ${message}. Only already collected edges will be used`
+    );
+    return edges;
   }
 }
 
@@ -195,7 +204,7 @@ export async function getRepoInfo(
   additions: number,
   deletions: number,
   commits: number,
-  languages: {[name: string]: number} = {}
+  languages: { [name: string]: number } = {}
 ): Promise<EdgeInfo> {
   const graphqlWithAuth = graphql.defaults({
     headers: {
@@ -203,10 +212,11 @@ export async function getRepoInfo(
     },
   });
 
-  increaseCounter('repoInfo')
+  increaseCounter("repoInfo");
 
   try {
-    const { repository }: any = await graphqlWithAuth(`
+    const { repository }: any = await graphqlWithAuth(
+      `
       query ($repo_name: String!, $owner: String!, $cursor: String) {
         repository(name: $repo_name, owner: $owner) {
           isFork
@@ -247,50 +257,57 @@ export async function getRepoInfo(
           }
         }
       }
-    `, {
-      repo_name: repoName,
-      owner: owner,
-      cursor
-    });
-
-    if (!repository.defaultBranchRef) return { additions: 0, deletions: 0, commits: 0, totalCommits: 0, languages: {} }
-
-    // Check if it's a fork and created before 2024
-    const isFork = repository.isFork || false;
-    const createdAt = repository.createdAt ? new Date(repository.createdAt) : new Date();
-    const isRecentFork = (createdAt.getFullYear() > 2024) || 
-                         (createdAt.getFullYear() === 2024 && createdAt.getMonth() >= 5); 
-    
-    // Skip language processing for old forks
-    if (isFork && !isRecentFork) {
-      return { 
-        additions, 
-        deletions, 
-        commits, 
-        totalCommits: repository.defaultBranchRef.target.history.totalCount,
-        languages: {}
+    `,
+      {
+        repo_name: repoName,
+        owner: owner,
+        cursor,
       }
+    );
+
+    if (!repository.defaultBranchRef)
+      return {
+        additions: 0,
+        deletions: 0,
+        commits: 0,
+        totalCommits: 0,
+        languages: {},
+      };
+
+    const isFork = repository.isFork || false;
+    const createdAt = repository.createdAt
+      ? new Date(repository.createdAt)
+      : new Date();
+    const isRecentFork =
+      createdAt.getFullYear() > 2024 ||
+      (createdAt.getFullYear() === 2024 && createdAt.getMonth() >= 5);
+
+    if (isFork && !isRecentFork) {
+      return {
+        additions,
+        deletions,
+        commits,
+        totalCommits: repository.defaultBranchRef.target.history.totalCount,
+        languages: {},
+      };
     }
 
-    // Process languages data if this is the first call (cursor is undefined)
     if (!cursor && repository.languages && repository.languages.edges) {
       for (const lang of repository.languages.edges) {
         let langName = lang.node.name;
-        
-        // Convert Jupyter Notebook to Python
-        if (langName === "Jupyter Notebook") {
-          langName = "Python";
-        }
-        
+
+        if (langName === "Jupyter Notebook") langName = "Python";
+
+        if (langName === "HTML") continue;
+
         languages[langName] = (languages[langName] || 0) + lang.size;
       }
     }
-
     for (var e of repository.defaultBranchRef.target.history.edges) {
       if (e.node.author.user?.id == ownerId) {
-        commits += 1
-        additions += e.node.additions
-        deletions += e.node.deletions
+        commits += 1;
+        additions += e.node.additions;
+        deletions += e.node.deletions;
       }
     }
 
@@ -298,13 +315,13 @@ export async function getRepoInfo(
       repository.defaultBranchRef.target.history.edges.length == 0 ||
       !repository.defaultBranchRef.target.history.pageInfo.hasNextPage
     ) {
-      return { 
-        additions, 
-        deletions, 
-        commits, 
+      return {
+        additions,
+        deletions,
+        commits,
         totalCommits: repository.defaultBranchRef.target.history.totalCount,
-        languages
-      }
+        languages,
+      };
     } else {
       return getRepoInfo(
         repoName,
@@ -315,12 +332,20 @@ export async function getRepoInfo(
         deletions,
         commits,
         languages
-      )
+      );
     }
   } catch (error) {
-    let message = 'Unknown Error'
-    if (error instanceof Error) message = error.message
-    console.log(`An error occurred while fetching repo info for ${owner}/${repoName}: ${message}`)
-    return { additions: 0, deletions: 0, commits: 0, totalCommits: 0, languages: {} }
+    let message = "Unknown Error";
+    if (error instanceof Error) message = error.message;
+    console.log(
+      `An error occurred while fetching repo info for ${owner}/${repoName}: ${message}`
+    );
+    return {
+      additions: 0,
+      deletions: 0,
+      commits: 0,
+      totalCommits: 0,
+      languages: {},
+    };
   }
 }

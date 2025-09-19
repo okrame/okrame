@@ -1,5 +1,5 @@
-<a href="https://github.com/gufett0/gufett0">
+<a href="https://github.com/okrame/okrame">
   <picture>
-    <img alt="gufett0 profile README" src="https://raw.githubusercontent.com/gufett0/gufett0/main/generated/cover.svg">
+    <img alt="okrame profile README" src="https://raw.githubusercontent.com/okrame/okrame/main/generated/cover.svg">
   </picture>
 </a>

@@ -21,7 +21,6 @@ async function main() {
     const personalRepos: Edge[] = await getEdges(['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], undefined, [])
     console.log(`Found ${personalRepos.length} personal repositories`)
     
-    // Debug the first repo to see if languages data is present
     if (personalRepos.length > 0) {
         console.log("Sample repository data:")
         console.log(`Name: ${personalRepos[0].node.nameWithOwner}`)

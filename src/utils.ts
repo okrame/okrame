@@ -40,12 +40,9 @@ export function getStats(cache: CacheInstance, userInfo: UserInfo): Stats {
     }
 }
 
-// Generate the SVG for a pie chart representing languages
 function generateLanguagePieChart(languages: LanguageStats, size = 300): string {
-    // Calculate total size
     const totalSize = Object.values(languages).reduce((sum, size) => sum + size, 0);
     
-    // Convert to array and sort by size descending
     const sortedLangs = Object.entries(languages)
         .map(([name, size]) => ({
             name,
@@ -54,14 +51,11 @@ function generateLanguagePieChart(languages: LanguageStats, size = 300): string 
         }))
         .sort((a, b) => b.size - a.size);
     
-    // Separate languages with ≥1% from languages with <1%
     const mainLangs = sortedLangs.filter(lang => lang.percentage >= 1.0);
     const smallLangs = sortedLangs.filter(lang => lang.percentage < 1.0);
     
-    // Create pie data with main languages
     let pieData: Array<{ name: string; size: number; percentage: number; color?: string }> = [...mainLangs];
     
-    // Group small languages into "Others" category if any exist
     if (smallLangs.length > 0) {
         const othersSize = smallLangs.reduce((sum, lang) => sum + lang.size, 0);
         const othersPercentage = (othersSize / totalSize) * 100;
@@ -73,12 +67,10 @@ function generateLanguagePieChart(languages: LanguageStats, size = 300): string 
         });
     }
     
-    // Assign colors to languages
     const colorMap: {[key: string]: string} = {
         "Python": "#3776AB",
         "TypeScript": "#3178C6",
         "JavaScript": "#F7DF1E",
-        "HTML": "#E34F26",
         "CSS": "#1572B6",
         "Rust": "#B7410E",
         "Solidity": "#363636",
@@ -97,30 +89,25 @@ function generateLanguagePieChart(languages: LanguageStats, size = 300): string 
         "Others": "#808080"
     };
     
-    // Default fallback colors for languages not in the map
     const fallbackColors = [
         "#FF6B6B", "#4ECDC4", "#FFE66D", "#1A535C", "#F7FFF7", 
         "#9B5DE5", "#F15BB5", "#FEE440", "#00BBF9", "#00F5D4"
     ];
     
-    // Assign colors to languages
     pieData = pieData.map((lang, i) => ({
         ...lang,
         color: colorMap[lang.name] || fallbackColors[i % fallbackColors.length]
     }));
     
-    // Calculate pie chart
     const radius = size / 2;
     const centerX = radius;
     const centerY = radius;
     let startAngle = 0;
     
-    // Generate wedges
     const wedges = pieData.map((item, index) => {
         const angle = (item.percentage / 100) * 360;
         const endAngle = startAngle + angle;
         
-        // Calculate SVG arc path
         const startRad = (startAngle - 90) * (Math.PI / 180);
         const endRad = (endAngle - 90) * (Math.PI / 180);
         
@@ -138,7 +125,7 @@ function generateLanguagePieChart(languages: LanguageStats, size = 300): string 
         
         const path = `M ${centerX} ${centerY} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2} Z`;
         
-        const color = item.color || "#000000"; // Default to black if color is undefined
+        const color = item.color || "#000000"; 
         const r = parseInt(color.substring(1, 3), 16);
         const g = parseInt(color.substring(3, 5), 16);
         const b = parseInt(color.substring(5, 7), 16);
@@ -168,9 +155,8 @@ function generateLanguagePieChart(languages: LanguageStats, size = 300): string 
 `;
     });
     
-    // Add text labels for percentages
     wedges.forEach(wedge => {
-        if (wedge.percentage >= 3) { // Only show labels for percentages >= 3% to avoid crowding
+        if (wedge.percentage >= 3) {
             svg += `  <text x="${wedge.labelX}" y="${wedge.labelY}" text-anchor="middle" dominant-baseline="middle" fill="${wedge.textColor}" font-weight="bold" font-family="monospace">${Math.round(wedge.percentage)}%</text>
 `;
         }
@@ -184,15 +170,13 @@ function generateLanguagePieChart(languages: LanguageStats, size = 300): string 
 export function generateSVG(stats: Stats): string {
     const username = process.env.GITHUB_USERNAME;
 
-    // Dimensions
-    const width = 1000;      // Total width
-    const padding = 50;      // Padding around the edges
-    const lineSpace = 35;    // Space between lines of text
-    const fontSize = 30;     // Font size for text
+    const width = 1000;      
+    const padding = 50;      
+    const lineSpace = 35;    
+    const fontSize = 30;    
     const fontFamily = 'monospace';
-    const pieChartSize = 300; // Size of the pie chart
+    const pieChartSize = 300; 
 
-    // Calculate text position
     const canvas = createCanvas(200, 100);
     const context = canvas.getContext('2d');
     context.font = `${fontSize}px ${fontFamily}`;
@@ -208,7 +192,6 @@ export function generateSVG(stats: Stats): string {
     const pieChart = generateLanguagePieChart(stats.languages, pieChartSize);
  
     
-    // Start building the SVG
     let svg = `
 <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
     <style>
@@ -260,15 +243,12 @@ export function generateSVG(stats: Stats): string {
     <!-- Legend -->
     <g transform="translate(${padding + pieChartSize + 50}, ${pieChartY + 20})">`;
 
-    // Add language stats as text for the legend
     const totalSize = Object.values(stats.languages).reduce((sum, size) => sum + size, 0);
     
-    // Get sorted languages and separate those with ≥1% from those with <1%
     const sortedLangs = sortAllLanguages(stats.languages);
     const mainLangs = sortedLangs.filter(lang => lang.percentage >= 1.0);
     const smallLangs = sortedLangs.filter(lang => lang.percentage < 1.0);
     
-    // Create legend items for main languages
     mainLangs.forEach((lang, index) => {
         const colorMap: {[key: string]: string} = {
             "Python": "#3776AB",
@@ -298,7 +278,6 @@ export function generateSVG(stats: Stats): string {
         <text x="30" y="${index * 35 + 16}" class="white">${lang.name.padEnd(15)} ${lang.percentage.toFixed(1)}%</text>`;
     });
     
-    // Add "Others" category to the legend if small languages exist
     if (smallLangs.length > 0) {
         const othersSize = smallLangs.reduce((sum, lang) => sum + lang.size, 0);
         const othersPercentage = (othersSize / totalSize) * 100;
