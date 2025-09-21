@@ -33,10 +33,10 @@
     <!-- Stats Section -->
     <text x="50" y="50" class="console ascii-art">
         <tspan x="50" y="67">$ okrame github-stats</tspan>
-        <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">1247 days</tspan></tspan>
+        <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">1249 days</tspan></tspan>
         <tspan x="50" y="154.5"><tspan class="cyan">repos:</tspan> <tspan class="white">39</tspan></tspan>
-        <tspan x="50" y="189.5"><tspan class="cyan">commits:</tspan> <tspan class="white">620</tspan></tspan>
-        <tspan x="50" y="224.5"><tspan class="cyan">lines:</tspan> <tspan class="white">374407 (<tspan class="green">491037++</tspan>, <tspan class="red">116630--</tspan>)</tspan></tspan>
+        <tspan x="50" y="189.5"><tspan class="cyan">commits:</tspan> <tspan class="white">627</tspan></tspan>
+        <tspan x="50" y="224.5"><tspan class="cyan">lines:</tspan> <tspan class="white">374782 (<tspan class="green">491738++</tspan>, <tspan class="red">116956--</tspan>)</tspan></tspan>
         <tspan x="50" y="259.5"><tspan class="cyan">languages:</tspan></tspan>
 
     </text>
@@ -45,33 +45,33 @@
     <g transform="translate(50, 279.5)">
         <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
   <!-- Pie Chart Wedges -->
-  <path d="M 150 150 L 150 0 A 150 150 0 0 1 224.77399529861728 280.034032572563 Z" fill="#3776AB" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 224.77399529861728 280.034032572563 A 150 150 0 0 1 4.981824073803267 188.33704019663818 Z" fill="#3178C6" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 4.981824073803267 188.33704019663818 A 150 150 0 0 1 31.64294691986659 57.85007875105653 Z" fill="#363636" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 31.64294691986659 57.85007875105653 A 150 150 0 0 1 94.15351354120418 10.783729578014004 Z" fill="#F7DF1E" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 94.15351354120418 10.783729578014004 A 150 150 0 0 1 111.60700941208127 4.996626681597576 Z" fill="#58A6FF" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 111.60700941208127 4.996626681597576 A 150 150 0 0 1 120.98670425597906 2.8326508016469916 Z" fill="#5D4F85" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 120.98670425597906 2.8326508016469916 A 150 150 0 0 1 149.99999999999997 0 Z" fill="#808080" stroke="#333" stroke-width="0.5" />
-  <text x="251.44580177139756" y="122.9121927251704" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">42%</text>
-  <text x="109.57146481695476" y="246.90476532634128" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">29%</text>
-  <text x="47.12538505891699" y="128.9806374805538" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">15%</text>
-  <text x="86.8425854272412" y="66.11829171693823" text-anchor="middle" dominant-baseline="middle" fill="#000000" font-weight="bold" font-family="monospace">8%</text>
-  <text x="139.79706331684213" y="45.49688960112492" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">3%</text>
+  <path d="M 150 150 L 150 0 A 150 150 0 0 1 225.21974451927423 279.7766929554576 Z" fill="#3776AB" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 225.21974451927423 279.7766929554576 A 150 150 0 0 1 5.207940628503451 189.18238817327267 Z" fill="#3178C6" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 5.207940628503451 189.18238817327267 A 150 150 0 0 1 30.9972602726001 58.68544509568743 Z" fill="#363636" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 30.9972602726001 58.68544509568743 A 150 150 0 0 1 94.22308486769987 10.755841277545187 Z" fill="#F7DF1E" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 94.22308486769987 10.755841277545187 A 150 150 0 0 1 111.65617084004401 4.983618975813272 Z" fill="#58A6FF" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 111.65617084004401 4.983618975813272 A 150 150 0 0 1 121.02422575502331 2.8252585974612714 Z" fill="#5D4F85" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 121.02422575502331 2.8252585974612714 A 150 150 0 0 1 149.99999999999997 0 Z" fill="#808080" stroke="#333" stroke-width="0.5" />
+  <text x="251.3991788236624" y="122.73818542563731" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">42%</text>
+  <text x="110.02081424070943" y="247.0910124884077" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">29%</text>
+  <text x="46.99223013496916" y="129.64319898822893" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">15%</text>
+  <text x="86.56866785497564" y="66.32523616819942" text-anchor="middle" dominant-baseline="middle" fill="#000000" font-weight="bold" font-family="monospace">9%</text>
+  <text x="139.81038501921194" y="45.4955898225185" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">3%</text>
 </svg>
     </g>
 
     <!-- Legend -->
     <g transform="translate(400, 299.5)">
         <rect x="0" y="0" width="20" height="20" fill="#3776AB" stroke="#333" stroke-width="1" />
-        <text x="30" y="16" class="white">Python          41.7%</text>
+        <text x="30" y="16" class="white">Python          41.6%</text>
         <rect x="0" y="35" width="20" height="20" fill="#3178C6" stroke="#333" stroke-width="1" />
         <text x="30" y="51" class="white">TypeScript      29.2%</text>
         <rect x="0" y="70" width="20" height="20" fill="#363636" stroke="#333" stroke-width="1" />
         <text x="30" y="86" class="white">Solidity        14.6%</text>
         <rect x="0" y="105" width="20" height="20" fill="#F7DF1E" stroke="#333" stroke-width="1" />
-        <text x="30" y="121" class="white">JavaScript      8.4%</text>
+        <text x="30" y="121" class="white">JavaScript      8.5%</text>
         <rect x="0" y="140" width="20" height="20" fill="#58A6FF" stroke="#333" stroke-width="1" />
-        <text x="30" y="156" class="white">Circom          2.0%</text>
+        <text x="30" y="156" class="white">Circom          1.9%</text>
         <rect x="0" y="175" width="20" height="20" fill="#5D4F85" stroke="#333" stroke-width="1" />
         <text x="30" y="191" class="white">Haskell         1.0%</text>
         <rect x="0" y="210" width="20" height="20" fill="#808080" stroke="#333" stroke-width="1" />
