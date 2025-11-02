@@ -317,13 +317,13 @@
 				"TypeScript": 12878
 			}
 		},
-		"81a7d251ee86fdd298b537436387850f9c7b8f8a0dd313d647182606fe65b12b": {
-			"additions": 19853,
-			"deletions": 2879,
-			"commits": 9,
-			"totalCommits": 9,
+		"d12e1b6e58e69563dbdc58ca6d52d3310b1ad880f8c98cf416e0ff19e248d9d4": {
+			"additions": 22424,
+			"deletions": 5066,
+			"commits": 14,
+			"totalCommits": 14,
 			"languages": {
-				"JavaScript": 98133,
+				"JavaScript": 87346,
 				"CSS": 27536
 			}
 		},
@@ -354,12 +354,12 @@
 			}
 		},
 		"88dff0afdfcb40b481c4abc67b4ed7ca5616b3d46b9ba9f22ee866a8f6a638a6": {
-			"additions": 68864,
-			"deletions": 22739,
-			"commits": 228,
-			"totalCommits": 228,
+			"additions": 68939,
+			"deletions": 22764,
+			"commits": 229,
+			"totalCommits": 229,
 			"languages": {
-				"JavaScript": 590550,
+				"JavaScript": 592674,
 				"CSS": 3236
 			}
 		},
@@ -379,7 +379,7 @@
 			"additions": 3825,
 			"deletions": 873,
 			"commits": 4,
-			"totalCommits": 11,
+			"totalCommits": 12,
 			"languages": {
 				"TypeScript": 26489
 			}
@@ -429,7 +429,7 @@
 		"Shell": 21661,
 		"Dockerfile": 2619,
 		"Cairo": 11588,
-		"JavaScript": 978184,
+		"JavaScript": 969521,
 		"Circom": 214036,
 		"Makefile": 704,
 		"SuperCollider": 12648,
