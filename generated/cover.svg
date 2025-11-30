@@ -33,7 +33,7 @@
     <!-- Stats Section -->
     <text x="50" y="50" class="console ascii-art">
         <tspan x="50" y="67">$ okrame github-stats</tspan>
-        <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">1312 days</tspan></tspan>
+        <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">1319 days</tspan></tspan>
         <tspan x="50" y="154.5"><tspan class="cyan">repos:</tspan> <tspan class="white">40</tspan></tspan>
         <tspan x="50" y="189.5"><tspan class="cyan">commits:</tspan> <tspan class="white">697</tspan></tspan>
         <tspan x="50" y="224.5"><tspan class="cyan">lines:</tspan> <tspan class="white">373532 (<tspan class="green">508345++</tspan>, <tspan class="red">134813--</tspan>)</tspan></tspan>
