@@ -97,22 +97,27 @@ export async function buildCache(
   userId: string,
   edges: Edge[]
 ): Promise<CacheInstance> {
-  var cache: CacheInstance;
+  let cache: CacheInstance;
 
-  if (process.env.FLUSH_CACHE == "true") {
+  try {
+    const data = readFileSync(process.env.CACHE_FILE);
+    cache = JSON.parse(data.toString());
+    if (!cache.languages) cache.languages = {};
+  } catch {
     cache = { edges: {}, languages: {} };
-  } else {
-    try {
-      const data = readFileSync(process.env.CACHE_FILE);
-      cache = JSON.parse(data.toString());
-      if (!cache.languages) {
-        cache.languages = {};
-      }
-    } catch (error) {
-      cache = { edges: {}, languages: {} };
-    }
+  }
+
+  if (edges.length === 0 && Object.keys(cache.edges).length > 0) {
+    console.log("No edges fetched, keeping existing cache.");
+    return cache;
+  }
+
+  if (process.env.FLUSH_CACHE === "true") {
+    console.log("FLUSH_CACHE=true: clearing cache before rebuild.");
+    cache = { edges: {}, languages: {} };
   }
 
   await handleEdgesUpdate(userId, cache, edges);
   return cache;
 }
+
