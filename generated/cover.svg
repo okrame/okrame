@@ -33,7 +33,7 @@
     <!-- Stats Section -->
     <text x="50" y="50" class="console ascii-art">
         <tspan x="50" y="67">$ okrame github-stats</tspan>
-        <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">1347 days</tspan></tspan>
+        <tspan x="50" y="119.5"><tspan class="cyan">account-age:</tspan> <tspan class="white">1354 days</tspan></tspan>
         <tspan x="50" y="154.5"><tspan class="cyan">repos:</tspan> <tspan class="white">40</tspan></tspan>
         <tspan x="50" y="189.5"><tspan class="cyan">commits:</tspan> <tspan class="white">706</tspan></tspan>
         <tspan x="50" y="224.5"><tspan class="cyan">lines:</tspan> <tspan class="white">374055 (<tspan class="green">509872++</tspan>, <tspan class="red">135817--</tspan>)</tspan></tspan>
@@ -45,18 +45,18 @@
     <g transform="translate(50, 279.5)">
         <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
   <!-- Pie Chart Wedges -->
-  <path d="M 150 150 L 150 0 A 150 150 0 0 1 226.17539567812878 279.2180679830825 Z" fill="#3776AB" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 226.17539567812878 279.2180679830825 A 150 150 0 0 1 7.204272119760645 195.9279881896936 Z" fill="#3178C6" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 7.204272119760645 195.9279881896936 A 150 150 0 0 1 26.63320116859596 64.67337492850262 Z" fill="#363636" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 26.63320116859596 64.67337492850262 A 150 150 0 0 1 90.65742743234652 12.23767176382077 Z" fill="#F7DF1E" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 90.65742743234652 12.23767176382077 A 150 150 0 0 1 107.88641245426727 6.033178322129004 Z" fill="#58A6FF" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 107.88641245426727 6.033178322129004 A 150 150 0 0 1 120.00023398857994 3.0305676704844586 Z" fill="#B7410E" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 120.00023398857994 3.0305676704844586 A 150 150 0 0 1 129.44939327249264 1.4144268001387275 Z" fill="#5D4F85" stroke="#333" stroke-width="0.5" />
-  <path d="M 150 150 L 129.44939327249264 1.4144268001387275 A 150 150 0 0 1 149.99999999999997 0 Z" fill="#808080" stroke="#333" stroke-width="0.5" />
-  <text x="251.29789730482207" y="122.36422605350594" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">42%</text>
-  <text x="112.67039389838394" y="248.14020841784568" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">29%</text>
-  <text x="46.13177889429218" y="134.62493433068354" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">15%</text>
-  <text x="83.47033273029139" y="68.7669810176806" text-anchor="middle" dominant-baseline="middle" fill="#000000" font-weight="bold" font-family="monospace">9%</text>
+  <path d="M 150 150 L 150 0 A 150 150 0 0 1 226.17673487528077 279.21727850307474 Z" fill="#3776AB" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 226.17673487528077 279.21727850307474 A 150 150 0 0 1 7.2136565235085754 195.95715522759667 Z" fill="#3178C6" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 7.2136565235085754 195.95715522759667 A 150 150 0 0 1 26.61546411319364 64.699025187297 Z" fill="#363636" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 26.61546411319364 64.699025187297 A 150 150 0 0 1 90.62848155026828 12.250144112695466 Z" fill="#F7DF1E" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 90.62848155026828 12.250144112695466 A 150 150 0 0 1 107.85609262017869 6.042051033084533 Z" fill="#58A6FF" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 107.85609262017869 6.042051033084533 A 150 150 0 0 1 120.00035154703653 3.0305436742089285 Z" fill="#B7410E" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 120.00035154703653 3.0305436742089285 A 150 150 0 0 1 129.44947439468208 1.4144155802953549 Z" fill="#5D4F85" stroke="#333" stroke-width="0.5" />
+  <path d="M 150 150 L 129.44947439468208 1.4144155802953549 A 150 150 0 0 1 149.99999999999997 0 Z" fill="#808080" stroke="#333" stroke-width="0.5" />
+  <text x="251.2977540964655" y="122.36370113397955" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">42%</text>
+  <text x="112.68092591559713" y="248.14421383598142" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">29%</text>
+  <text x="46.12861254882718" y="134.64634020930723" text-anchor="middle" dominant-baseline="middle" fill="#FFFFFF" font-weight="bold" font-family="monospace">15%</text>
+  <text x="83.45335535112929" y="68.78088841918469" text-anchor="middle" dominant-baseline="middle" fill="#000000" font-weight="bold" font-family="monospace">9%</text>
 </svg>
     </g>
 
