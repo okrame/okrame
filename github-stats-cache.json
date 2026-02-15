@@ -379,7 +379,7 @@
 			"additions": 4517,
 			"deletions": 1069,
 			"commits": 7,
-			"totalCommits": 29,
+			"totalCommits": 30,
 			"languages": {
 				"TypeScript": 26662
 			}
@@ -447,27 +447,41 @@
 				"JavaScript": 944,
 				"CSS": 103
 			}
+		},
+		"bbc3753ecbf1cbd90de96a639067f4ceff866b7e3cccc076d6734bdc76268a33": {
+			"additions": 3,
+			"deletions": 1,
+			"commits": 1,
+			"totalCommits": 59,
+			"languages": {
+				"Python": 211069,
+				"TeX": 168643,
+				"BibTeX Style": 88360,
+				"Makefile": 602
+			}
 		}
 	},
 	"languages": {
-		"MATLAB": 320958,
-		"Python": 50283233,
-		"Haskell": 1231967,
-		"C": 211948,
-		"Solidity": 17660071,
-		"TypeScript": 34531899,
-		"CSS": 555774,
-		"Shell": 238271,
-		"Dockerfile": 28809,
-		"Cairo": 127468,
-		"JavaScript": 10841827,
-		"Circom": 2354396,
-		"Makefile": 7744,
-		"SuperCollider": 139128,
-		"Ruby": 54934,
-		"C++": 21516,
-		"Rust": 1617431,
-		"PowerShell": 239712,
-		"PLSQL": 704748
+		"MATLAB": 350136,
+		"Python": 55065505,
+		"Haskell": 1343964,
+		"C": 231216,
+		"Solidity": 19265532,
+		"TypeScript": 37670270,
+		"CSS": 606668,
+		"Shell": 259932,
+		"Dockerfile": 31428,
+		"Cairo": 139056,
+		"JavaScript": 11849722,
+		"Circom": 2568432,
+		"Makefile": 9050,
+		"SuperCollider": 151776,
+		"Ruby": 59928,
+		"C++": 23472,
+		"Rust": 1765482,
+		"PowerShell": 261504,
+		"PLSQL": 768816,
+		"TeX": 168643,
+		"BibTeX Style": 88360
 	}
 }
