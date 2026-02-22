@@ -379,7 +379,7 @@
 			"additions": 4517,
 			"deletions": 1069,
 			"commits": 7,
-			"totalCommits": 30,
+			"totalCommits": 31,
 			"languages": {
 				"TypeScript": 26662
 			}
@@ -437,51 +437,64 @@
 			}
 		},
 		"71b697a94599107992aea7543702b71c446fba305e881211abdab631324370c9": {
-			"additions": 114639,
-			"deletions": 68282,
-			"commits": 120,
-			"totalCommits": 120,
+			"additions": 155961,
+			"deletions": 84285,
+			"commits": 129,
+			"totalCommits": 129,
 			"languages": {
-				"TypeScript": 323222,
-				"Solidity": 11460,
-				"JavaScript": 944,
-				"CSS": 103
+				"TypeScript": 567058,
+				"Rust": 47777,
+				"Solidity": 13880,
+				"CSS": 4813,
+				"JavaScript": 973,
+				"Dockerfile": 342
 			}
 		},
 		"bbc3753ecbf1cbd90de96a639067f4ceff866b7e3cccc076d6734bdc76268a33": {
-			"additions": 3,
-			"deletions": 1,
-			"commits": 1,
-			"totalCommits": 59,
+			"additions": 2094,
+			"deletions": 27,
+			"commits": 3,
+			"totalCommits": 61,
 			"languages": {
-				"Python": 211069,
-				"TeX": 168643,
+				"TeX": 284213,
+				"Python": 220168,
 				"BibTeX Style": 88360,
 				"Makefile": 602
+			}
+		},
+		"47c4c77c310dbb9aea25d0ffbeab8c5cb0d4509b748c9752ec368894b5976eb2": {
+			"additions": 35205,
+			"deletions": 602,
+			"commits": 10,
+			"totalCommits": 10,
+			"languages": {
+				"TypeScript": 794550,
+				"CSS": 9024,
+				"JavaScript": 1230
 			}
 		}
 	},
 	"languages": {
-		"MATLAB": 350136,
-		"Python": 55065505,
-		"Haskell": 1343964,
-		"C": 231216,
-		"Solidity": 19265532,
-		"TypeScript": 37670270,
-		"CSS": 606668,
-		"Shell": 259932,
-		"Dockerfile": 31428,
-		"Cairo": 139056,
-		"JavaScript": 11849722,
-		"Circom": 2568432,
-		"Makefile": 9050,
-		"SuperCollider": 151776,
-		"Ruby": 59928,
-		"C++": 23472,
-		"Rust": 1765482,
-		"PowerShell": 261504,
-		"PLSQL": 768816,
-		"TeX": 168643,
-		"BibTeX Style": 88360
+		"MATLAB": 379314,
+		"Python": 59856876,
+		"Haskell": 1455961,
+		"C": 250484,
+		"Solidity": 20873413,
+		"TypeScript": 41847027,
+		"CSS": 671296,
+		"Shell": 281593,
+		"Dockerfile": 34389,
+		"Cairo": 150644,
+		"JavaScript": 12858876,
+		"Circom": 2782468,
+		"Makefile": 10356,
+		"SuperCollider": 164424,
+		"Ruby": 64922,
+		"C++": 25428,
+		"Rust": 1961310,
+		"PowerShell": 283296,
+		"PLSQL": 832884,
+		"TeX": 452856,
+		"BibTeX Style": 176720
 	}
 }
