@@ -379,7 +379,7 @@
 			"additions": 4517,
 			"deletions": 1069,
 			"commits": 7,
-			"totalCommits": 38,
+			"totalCommits": 39,
 			"languages": {
 				"TypeScript": 26662
 			}
@@ -437,12 +437,12 @@
 			}
 		},
 		"71b697a94599107992aea7543702b71c446fba305e881211abdab631324370c9": {
-			"additions": 159535,
-			"deletions": 88077,
-			"commits": 143,
-			"totalCommits": 143,
+			"additions": 160243,
+			"deletions": 88099,
+			"commits": 148,
+			"totalCommits": 148,
 			"languages": {
-				"TypeScript": 544562,
+				"TypeScript": 547020,
 				"Rust": 47777,
 				"Solidity": 13880,
 				"CSS": 5348,
@@ -463,14 +463,14 @@
 			}
 		},
 		"47c4c77c310dbb9aea25d0ffbeab8c5cb0d4509b748c9752ec368894b5976eb2": {
-			"additions": 67494,
-			"deletions": 25391,
-			"commits": 39,
-			"totalCommits": 39,
+			"additions": 76676,
+			"deletions": 26108,
+			"commits": 41,
+			"totalCommits": 41,
 			"languages": {
-				"TypeScript": 560498,
+				"TypeScript": 833192,
 				"Rust": 148993,
-				"CSS": 8782,
+				"CSS": 10929,
 				"Shell": 3894,
 				"JavaScript": 1326,
 				"Dockerfile": 451
@@ -500,26 +500,26 @@
 		}
 	},
 	"languages": {
-		"MATLAB": 583560,
-		"Python": 93396473,
-		"Haskell": 2239940,
-		"C": 385360,
-		"Solidity": 32128580,
-		"TypeScript": 69126954,
-		"CSS": 1113016,
-		"Shell": 476616,
-		"Dockerfile": 56729,
-		"Cairo": 231760,
-		"JavaScript": 19955585,
-		"Circom": 4280720,
-		"Makefile": 19498,
-		"SuperCollider": 252960,
-		"Ruby": 99880,
-		"C++": 39120,
-		"Rust": 3481099,
-		"PowerShell": 435840,
-		"PLSQL": 1281360,
-		"TeX": 2442347,
-		"BibTeX Style": 795240
+		"MATLAB": 612738,
+		"Python": 98187844,
+		"Haskell": 2351937,
+		"C": 404628,
+		"Solidity": 33736461,
+		"TypeScript": 73372022,
+		"CSS": 1180143,
+		"Shell": 521922,
+		"Dockerfile": 60307,
+		"Cairo": 243348,
+		"JavaScript": 20980828,
+		"Circom": 4494756,
+		"Makefile": 20804,
+		"SuperCollider": 265608,
+		"Ruby": 104874,
+		"C++": 41076,
+		"Rust": 3825920,
+		"PowerShell": 457632,
+		"PLSQL": 1345428,
+		"TeX": 2726560,
+		"BibTeX Style": 883600
 	}
 }
