@@ -379,7 +379,7 @@
 			"additions": 4517,
 			"deletions": 1069,
 			"commits": 7,
-			"totalCommits": 43,
+			"totalCommits": 44,
 			"languages": {
 				"TypeScript": 26662
 			}
@@ -500,26 +500,26 @@
 		}
 	},
 	"languages": {
-		"MATLAB": 729450,
-		"Python": 117353328,
-		"Haskell": 2799925,
-		"C": 481700,
-		"Solidity": 40167985,
-		"TypeScript": 90939798,
-		"CSS": 1448651,
-		"Shell": 703146,
-		"Dockerfile": 74619,
-		"Cairo": 289700,
-		"JavaScript": 25081800,
-		"Circom": 5350900,
-		"Makefile": 26028,
-		"SuperCollider": 316200,
-		"Ruby": 124850,
-		"C++": 48900,
-		"Rust": 5205204,
-		"PowerShell": 544800,
-		"PLSQL": 1601700,
-		"TeX": 3863412,
-		"BibTeX Style": 1237040
+		"MATLAB": 758628,
+		"Python": 122144699,
+		"Haskell": 2911922,
+		"C": 500968,
+		"Solidity": 41775866,
+		"TypeScript": 95331742,
+		"CSS": 1515778,
+		"Shell": 748452,
+		"Dockerfile": 78197,
+		"Cairo": 301288,
+		"JavaScript": 26107043,
+		"Circom": 5564936,
+		"Makefile": 27334,
+		"SuperCollider": 328848,
+		"Ruby": 129844,
+		"C++": 50856,
+		"Rust": 5550025,
+		"PowerShell": 566592,
+		"PLSQL": 1665768,
+		"TeX": 4147625,
+		"BibTeX Style": 1325400
 	}
 }
